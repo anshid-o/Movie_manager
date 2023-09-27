@@ -1,0 +1,74 @@
+{% include 'menu.html' %}
+
+{% load static %}
+<h1>Edit Movies</h1>
+{% for i in movies %}
+<br>
+<style>
+    .main{
+        height:400px;
+        width:800px;
+        padding: 10px 20px;
+    font-size: 18px;
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-radius:20px;
+    cursor: pointer;
+    margin-top: 10px;
+    }
+    .keyp{ 
+        display: none; 
+    }
+    #deln{ 
+        display: none; 
+    }
+    .left{
+        float:left;
+    }
+    .right{
+        
+        
+        float:right;
+        margin:50px;
+    }
+    .below{
+        float:left;
+    }
+</style>
+<div class='main'>
+<div class='left'>
+<h1>Title : {{i.title | upper}}</h1>
+{% comment %} <img  src="{% static 'images/' %}{{i.img}}" height=400 > {% endcomment %}
+<h3>Summary : {{i.desc | default:'No data available' | lower}}</h3>
+<h3>Year : {{i.year}}</h3>
+</div>
+<div class='right' >
+    <form method="get" enctype="multipart/form-data" onsubmit="return deleteMovie()">
+        <input id='deln' type="text" name="keyd" value="{{i.id}}">
+    <button type="submit">Delete</button>
+    </form>
+</div>
+
+<br>
+<div class='below'>
+<h1>Edit</h1>
+<br>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    Title:   <input type="text" name="title" id="">
+    Year:   <input type="text" name="year" id="">
+    Summary:   <input type="text" name="summary" id="">
+    <input class='keyp' type="text" name="key" value={{i.id}}>
+    
+    <button type="submit">Update</button>
+</form>
+</div>
+</div>
+{% comment %} {% if i.success %}
+<p>Movie was a success at that time</p>
+{% else %}
+<p>Movie was a Failure</p>
+{% endif %} {% endcomment %}
+<br>
+{% endfor %}

@@ -1,0 +1,33 @@
+{% include 'menu.html' %}
+{% load static %}
+<h1>List Movies</h1>
+<style>
+    .main{
+        height:200px;
+        width:500px;
+        padding: 10px 20px;
+    font-size: 18px;
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-radius:20px;
+    cursor: pointer;
+    margin-top: 10px;
+    }
+    
+</style>
+{% for i in movies %}
+<br>
+<div class='main'>
+<h1>Title : {{i.title | upper}}</h1>
+{% comment %} <img  src="{% static 'images/' %}{{i.img}}" height=400 > {% endcomment %}
+<h3>Summary : {{i.desc | default:'No data available' | lower}}</h3>
+<h3>Year : {{i.year}}</h3>
+</div>
+{% comment %} {% if i.success %}
+<p>Movie was a success at that time</p>
+{% else %}
+<p>Movie was a Failure</p>
+{% endif %} {% endcomment %}
+<br>
+{% endfor %}

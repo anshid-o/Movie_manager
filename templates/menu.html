@@ -1,0 +1,33 @@
+{% load static %}
+<link rel="stylesheet" href="style.css" type="text/css">
+<style>
+    .ab{
+    background:#fff;
+    height: 300px;
+    border: 5px solid crimson;
+    width: 300px;
+    padding: 30px;
+    margin: 30px;
+}
+.inner{
+    background: red;
+    height: 200px;
+    width: 200px;
+    margin-left: 23px;
+
+}
+
+</style>
+
+<img src="{% static 'images/lcu.jpeg' %}" height="300"/>
+<div class="ab">
+<ul>
+    <li><a href="{% url 'create' %}">Create</a></li>
+    <li><a href="{% url 'edit' %}">Edit</a></li>
+    <li><a href="{% url 'list' %}">List</a></li>
+</ul>
+<div class="inner">
+    <img src="{% static 'images/lcu3.jpeg' %}" height="200"/>
+
+</div>
+</div>
