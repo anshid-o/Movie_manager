@@ -3,9 +3,10 @@
 <br>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    Title:   <input type="text" name="title" id="">
-    Year:   <input type="text" name="year" id="">
-    Summary:   <input type="text" name="summary" id="">
+    {{ frm.as_p }}
+    {% comment %} Title:   <input type="text" name="title" id="">
+    Year:   <input type="number" name="year" id="">
+    Summary:   <input type="text" name="summary" id=""> {% endcomment %}
     <button type="submit">Create</button>
 </form>
 
